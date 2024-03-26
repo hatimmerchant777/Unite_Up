@@ -19,7 +19,7 @@ function Home({ handleCategoryClick }) {
             "Welcome to <b>Unite Up</b>, your platform for fostering connections between NGOs and individuals in need within our community. Our website serves as a bridge, empowering NGOs to extend their reach and support to those facing hardships, while providing a centralized hub for individuals seeking assistance.<br/>
             <br/>
 
-            With intuitive filters for category and city, navigating our directory of NGOs and individuals has never been easier. Whether you're searching for educational support, healthcare services, food aid, or more, our platform enables you to find the right match based on your specific needs and location.
+            With intuitive filters for category and city, navigating our directory of NGOs and individuals has never been easier. Whether you're searching for educational support, healthcare services, food aid, or more, our platform enables you to find the right match based on your specific needs and location...
             <br/>
             <br/>
 
