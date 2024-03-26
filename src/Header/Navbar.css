@@ -1,0 +1,13 @@
+.nav-link{
+    color: white !important;
+
+}
+.navbar{
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
+.colCss{
+    padding: 0 ;
+}
+.nav-link:hover{
+    text-decoration: underline;
+}
