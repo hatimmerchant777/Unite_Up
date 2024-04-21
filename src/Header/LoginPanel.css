@@ -29,8 +29,11 @@
 }
 .register1 {
     color: white;
-    text-decoration: none;
-    
+    text-decoration: none; 
+}
+.login1 {
+    color: white;
+    text-decoration: none; 
 }
 .register1:hover {
     text-decoration: underline;
@@ -51,7 +54,7 @@
         display: grid;
         color: white;
         height: 40px;
-        grid-template-columns: auto 30px 55px 30px 100px;
+        grid-template-columns: auto 30px 55px 30px 110px;
         padding-top: 8px;
         margin-bottom: 0px;
     }
@@ -69,6 +72,9 @@
     }
     .register1 p{ 
         padding-left: 0px;
+    }
+    .register1{ 
+        padding-right: 2px;
     }
     .fa-right-to-bracket{
         padding-top: 4px;

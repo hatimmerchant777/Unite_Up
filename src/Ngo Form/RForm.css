@@ -2,7 +2,7 @@
     text-align: center;
 }
 .headingnew{
-    background-color: rgba(117, 173, 208, 0.34);
+    /* background-color: rgba(117, 173, 208, 0.34); */
     background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
     font-size: 40px;
     padding: 10px;
@@ -10,7 +10,7 @@
     text-align: center;
 }
 .rform{
-    
+   padding: 10px; 
 }
 .buttonsumit{
     margin-bottom: 20px; 

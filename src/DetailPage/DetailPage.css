@@ -52,3 +52,18 @@
 .buttonDP{
     padding-bottom: 20px;
 }
+
+@media screen and (max-width: 400px){
+    .membersAadhar{
+        display: none;
+    }
+    .membersPan{
+        display: none;
+    }
+    .purpose{
+        display: none;
+    } 
+    .emailWidth{
+        font-size: small;
+    } 
+}

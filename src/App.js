@@ -12,6 +12,9 @@ import RForm from "./Ngo Form/RForm";
 import About from "./About/About";
 import Contact from "./Contact/Contact";
 import Feedback from "./Feedback/Feedback";
+import PopupButton from "./pop-up Form/popForm";
+import LoginNgo from "./Login Ngo/LoginNgo";
+import HomeNgo from "./NGOportal/HomePage/HomeNgo";
 
 function App(){
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -29,10 +32,12 @@ function App(){
                     {/* <Route path="/Food" element={<Food/>}></Route> */}
                     <Route path="/:category/detailpage/:id" element={<DetailPage/>}></Route>
                     <Route path="/rform" element={<RForm/>}></Route>
+                    <Route path="/loginNgo" element={<LoginNgo/>}></Route>
                     <Route path="/about" element={<About/>}></Route>
                     <Route path="/contact" element={<Contact/>}></Route>
                     <Route path="/feedback" element={<Feedback/>}></Route>
-
+                    <Route path="/pop" element={<PopupButton/>}></Route>
+                    {/* <Route path="/ngopage" element={<HomeNgo/>}></Route> */}
                 </Route>
             </Routes>
         </BrowserRouter>        

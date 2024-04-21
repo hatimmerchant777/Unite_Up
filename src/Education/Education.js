@@ -5,24 +5,25 @@ import DataTable from "react-data-table-component";
 import "../About/About.css";
 
 function Education({ category }) {
-  
   const [ngoList, setNgoList] = useState([]);
   const [flag, setFlag] = useState(false);
   const [filterNgoList, setfilterNgoList] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     console.log("new hello " + category);
     fetch(`/edu?category=${category}`)
       .then((res) => res.json())
       .then((res) => {
         console.log("data  received", res);
         setNgoList(res);
+        setLoading(false);
       });
   }, [category]);
 
-  console.log("data  received",ngoList );
+  console.log("data  received", ngoList);
 
   const handleCitySelect = (city) => {
     if (city == "Select District" || city == "N/A") {
@@ -210,6 +211,14 @@ function Education({ category }) {
             responsive
             wrap
             customStyles={customStyles}
+            progressPending={loading}
+            progressComponent={
+              <div class="text-center mt-2 mb-4">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only ">Loading...</span>
+                </div>
+              </div>
+            }
           />
         </div>
       </div>

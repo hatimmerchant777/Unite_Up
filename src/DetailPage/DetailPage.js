@@ -1,10 +1,23 @@
 import { useParams, Link, useHistory } from "react-router-dom";
+// import swal from "react-swal";
+import Swal from "sweetalert2";
 
 import { useState } from "react";
 import { useEffect } from "react";
 import "./DetailPage.css";
+import PopupButton from "../pop-up Form/popForm";
 
 function DetailPage() {
+  const [showContactForm, setShowContactForm] = useState(false);
+  
+  const handleContactClick = () => {
+    setShowContactForm(true);
+  };
+
+  const handleCloseContactForm = () => {
+    setShowContactForm(false);
+  };
+
   const { id } = useParams();
   // const history = useHistory();
   const [ngoObject, setNgoObject] = useState({});
@@ -38,18 +51,18 @@ function DetailPage() {
         </div> */}
         <div class="row ngoDetail">
           <div className="col-8">
-          <h4>NGO DETAILS</h4>
+            <h4>NGO DETAILS</h4>
           </div>
           <div className="col-2 printIcon">
-          <i class="fa-solid fa-print printIcon" onClick={handlePrint}></i>
+            <i class="fa-solid fa-print printIcon" onClick={handlePrint}></i>
           </div>
           <div className="col-2 closeIcon">
-          <Link
-            to="../education"
-            type="button"
-            class="btn-close "
-            aria-label="Close"
-          ></Link>
+            <Link
+              to="../education"
+              type="button"
+              class="btn-close "
+              aria-label="Close"
+            ></Link>
           </div>
         </div>
 
@@ -74,6 +87,7 @@ function DetailPage() {
             <h5>Registration Details</h5>
           </div>
         </div>
+
         <table class="table table-striped table-hover">
           <tbody>
             <tr>
@@ -120,24 +134,20 @@ function DetailPage() {
             <tr>
               <th>Name</th>
               <th>Designation</th>
-              <th>Pan</th>
-              <th>Aadhaar</th>
+              <th className="membersPan">Pan</th>
+              <th className="membersAadhar">Aadhaar</th>
             </tr>
             {ngoObject.members &&
               ngoObject.members.Name.map((name, index) => (
                 <tr key={index}>
                   <td>{name}</td>
                   <td>{ngoObject.members.Designation[index]}</td>
-                  <td>{ngoObject.members.Pan[index]}</td>
-                  <td>{ngoObject.members.Aadhaar[index]}</td>
+                  <td className="membersPan">{ngoObject.members.Pan[index]}</td>
+                  <td className="membersAadhar">
+                    {ngoObject.members.Aadhaar[index]}
+                  </td>
                 </tr>
               ))}
-            <tr>
-              <td>SWAMISHREEMANOHARANAND UMAMATESHVARI</td>
-              <td>Trustee</td>
-              <td>Available</td>
-              <td>Available</td>
-            </tr>
           </tbody>
         </table>
         <div class="row">
@@ -148,15 +158,15 @@ function DetailPage() {
         <table class="table table-striped table-hover">
           <tbody>
             <tr>
-              <td>Key Issues </td>
+              <td className="keyIssues">Key Issues </td>
               <td>{ngoObject.key_issue}</td>
             </tr>
             <tr>
-              <td>Operational Area-States</td>
+              <td className="keyIssues">Operational Area-States</td>
               <td>GUJARAT</td>
             </tr>
             <tr>
-              <td>Operational Area-District</td>
+              <td className="keyIssues">Operational Area-District</td>
               <td>GUJARAT-Surat</td>
             </tr>
           </tbody>
@@ -205,35 +215,35 @@ function DetailPage() {
               <th>Source</th>
               <th>Finacial Year</th>
               <th>Amount Sanctioned</th>
-              <th>Purpose</th>
+              <th className="purpose">Purpose</th>
             </tr>
             <tr>
               <td>Not Specified</td>
               <td>Any Other</td>
               <td>2016-2017</td>
               <td>Not Specified</td>
-              <td>NOT AVAILABLE</td>
+              <td className="purpose">NOT AVAILABLE</td>
             </tr>
             <tr>
               <td>Not Specified</td>
               <td>Any Other</td>
               <td>2016-2017</td>
               <td>Not Specified</td>
-              <td>NOT AVAILABLE</td>
+              <td className="purpose">NOT AVAILABLE</td>
             </tr>
             <tr>
               <td>Not Specified</td>
               <td>Any Other</td>
               <td>2016-2017</td>
               <td>Not Specified</td>
-              <td>NOT AVAILABLE</td>
+              <td className="purpose">NOT AVAILABLE</td>
             </tr>
             <tr>
               <td>Not Specified</td>
               <td>Any Other</td>
               <td>2016-2017</td>
               <td>Not Specified</td>
-              <td>NOT AVAILABLE</td>
+              <td className="purpose">NOT AVAILABLE</td>
             </tr>
           </tbody>
         </table>
@@ -242,7 +252,7 @@ function DetailPage() {
             <h5>Contact Details</h5>
           </div>
         </div>
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover ">
           <tbody>
             <tr>
               <td>Address</td>
@@ -273,22 +283,38 @@ function DetailPage() {
             </tr>
             <tr>
               <td>E-mail </td>
-              <td>{ngoObject.contacts?.["E-mail"] || "N/A"}</td>
+              <td className="emailWidth">
+                {ngoObject.contacts?.["E-mail"] || "N/A"}
+              </td>
             </tr>
           </tbody>
         </table>
         <div class="row buttonDP">
-          <div class="col-md-6 buttonDonate ">
+          <div class="col-6 buttonDonate ">
             <a href="" class="btn btn-success">
               Donate
             </a>
           </div>
-          <div class="col-md-6 ">
-            <a href="" class="btn btn-info buttonContact">
+          <div class="col-6 ">
+            <button
+              // onClick={()=>{
+              //   Swal.fire({
+              //     title: "Auto close alert!",
+              //     html: "<h1>hello</h1>",
+              //   });
+              // }}
+              onClick={handleContactClick}
+              class="btn btn-info buttonContact"
+            >
               Contact
-            </a>
+            </button>
           </div>
         </div>
+        {showContactForm && (
+          <div>
+            <PopupButton onClose={handleCloseContactForm} />
+          </div>
+        )}
       </div>
     </>
   );
